@@ -43,7 +43,7 @@ async function top_right_user_account_button_is_for_login_or_log_out(called_on_p
     }
 }
 
-//COMPLETED, BUT THE BACK END PART (PYTHON APP) IS NOT SINCE THERE IS A ROUTE AND FUNCTION BUT THE DATABASE FOR USERS IS NOT YET CREATED
+//Completed login function
 async function user_is_logged_in(username) {
     logged_in = false;
 
@@ -742,3 +742,4 @@ async function populateCompletedChallenges(username) {
         }
     };
 }
+
