@@ -23,5 +23,5 @@ Hello! My name is Alexander Lim- I'm a recent graduate of UC Merced looking to g
 
 ### Contact Info
 - Email: alex.k.lim@outlook.com
-- LinkedIn Profile: [Alexander Lim](www.linkedin.com/in/alexander-lim-4b9347205
+- LinkedIn Profile: [Alexander Lim](www.linkedin.com/in/alexander-lim-4b9347205)
 
