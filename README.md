@@ -1,16 +1,27 @@
-## Hi there 👋
+## ✨ Alexander Lim - Aspiring Software Developer ✨
+Hello! My name is Alexander Lim- I'm a recent graduate of UC Merced looking to get into the software development industry. I like tutoring kids in STEM, creating indie games in Unity, and researching the latest novelties in AI. Please feel free to browse my portfolio and provide feedback!
 
-<!--
-**mythical314/mythical314** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+### Experience
+- 4 years coding in Python
+- 4 years creating workflows in Salesforce
+- 4 years project leadership experience
+- 4 years experience using Github to manage projects
+- 4 years experience developing games in Unity (C#)
+- 2 years using AGILE framework
+- 2 years handling fullstack development
+- 2 years using React
+- 2 years using SQL
+- 2 years using MongoDB
+- 1 year researching and developing AI
+- 1 year developing ontology learning frameworks
 
-Here are some ideas to get you started:
+### Skills
+- Coding Languages: Python, C++, C#, SQL, HTML, CSS, JS
+- Databases: SQLite, MongoDB, Redis, GraphDB
+- Concepts: Algorithms, AI, Fullstack Development, Web Applications, UI/UX Design, Ontologies, Distributed Computing
+- Soft Skills: Communication, Teaching, Problem-Solving, Creativity, Documentation
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### Contact Info
+- Email: alex.k.lim@outlook.com
+- LinkedIn Profile: [Alexander Lim](www.linkedin.com/in/alexander-lim-4b9347205
+
