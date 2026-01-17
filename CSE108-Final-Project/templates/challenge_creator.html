@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Challenge Creator</title>
+    <link rel="stylesheet" href = "{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='functions.js') }}"></script>
+</head>
+
+<body onload="populateChallengeQuizzes('{{ USERNAME }}')">
+    <div id = "top">
+        <h1 class="logo-link">
+            <a href="{{ url_for('main_menu', username=USERNAME) }}">QuizQuest</a>
+        </h1>
+        <div id="button-container">
+            <button type="button" onclick="window.location.href='{{ url_for('inbox', username=USERNAME) }}'">Inbox 📧</button>
+            <button type="button", id="login and sign out button", onclick="top_right_user_account_button_is_for_login_or_log_out(false)">Sign Out</button>
+        </div>
+    </div>
+    <h2>Select Quiz for Challenge</h2>
+
+    <table class = "List">
+        <thead>
+            <tr>
+                <th class = "List_Head">Quiz Name</th>
+                <th class = "List_Head">Topic</th>
+                <th class = "List_Head">Private</th>
+                <th class = "List_Head">Length</th>
+                <th class = "List_Head">Type</th>
+                <th class = "List_Head">Select</th>
+            </tr>
+        </thead>
+        <tbody class = "List_Body" id = "quiz_table">
+            </tbody>
+    </table>
+</body>

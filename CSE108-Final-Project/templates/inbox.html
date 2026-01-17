@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Inbox</title>
+    <link rel="stylesheet" href = "{{ url_for('static', filename='style.css') }}">
+    <script type="text/javascript" src="{{ url_for ('static',filename = 'functions.js')}}"></script>
+</head>
+
+<body onload="populatePendingChallenges('{{ USERNAME }}'); populateCompletedChallenges('{{ USERNAME }}')">
+    <div id = "top">
+        <h1 class="logo-link">
+            <a href="{{ url_for('main_menu', username=USERNAME) }}">QuizQuest</a>
+        </h1>
+        <div id="button-container">
+            <button onclick="history.back()">Go Back &#11013;</button>
+            <button type="button", id="login and sign out button", onclick="top_right_user_account_button_is_for_login_or_log_out(false)">Sign Out</button>
+        </div>
+    </div>
+
+    <!-- This is the main block of the page -->
+    <h2>Pending Challenges</h2>
+    <table class="List">
+        <thead>
+            <tr>
+                <th class="List_Head">Challenger</th>
+                <th class="List_Head">Accept</th>
+                <th class="List_Head">Decline</th>
+            </tr>
+        </thead>
+        <tbody class="List_Body" id="pending_challenges_table">
+            </tbody>
+    </table>
+
+    <h2>Completed Challenges</h2>
+    <table class="List">
+        <thead>
+            <tr>
+                <th class="List_Head">Challenger</th>
+                <th class="List_Head">Challenger Score</th>
+                <th class="List_Head">Your Score</th>
+            </tr>
+        </thead>
+        <tbody class="List_Body" id="completed_challenges_table">
+            </tbody>
+    </table>
+</body>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Main Menu</title>
+    <link rel="stylesheet" href = "{{ url_for('static', filename='style.css') }}">
+    <script type="text/javascript" src="{{ url_for ('static',filename = 'functions.js')}}"></script>
+</head>
+
+<body>
+    <div id = "top">
+        <h1 class="logo-link">
+            <a href="{{ url_for('main_menu', username=USERNAME) }}">QuizQuest</a>
+        </h1>
+        <div id="button-container">
+            <button type="button" onclick="window.location.href='{{ url_for('inbox', username=USERNAME) }}'">Inbox 📧</button>
+            <button type="button", id="login and sign out button", onclick="top_right_user_account_button_is_for_login_or_log_out(false)">Sign Out</button>
+        </div>
+    </div>
+    <h2>Welcome to QuizQuest!</h2>
+
+    <!-- NOTE: have a user account button in the top right for going to login page or signing out -->
+    <!-- <div> -->
+        <!-- <button id="login and sign out button" onload="top_right_user_account_button_is_for_login_or_log_out(true)" type="button", onclick="top_right_user_account_button_is_for_login_or_log_out(false)"></button> -->
+    <!-- </div> -->
+
+    <!-- This is the main block of the page -->
+    <div class = "Main_Body">
+        <div class = "Body_Tabs">
+            <button onclick="window.location.href='{{ url_for('quiz_list', username=USERNAME) }}'">Create A Quiz</button>
+            <button onclick="window.location.href='{{ url_for('challenge_creator', username=USERNAME) }}'">Challenge A Friend</button>
+        </div>
+        <div class = "Body_Tabs">
+            <button onclick="window.location.href='{{ url_for('friends_list', username=USERNAME) }}'">Search for Friends</button>
+            <button onclick="window.location.href='{{ url_for('pending_friends', username=USERNAME) }}'">Your Friends/Friend Requests</button>
+        </div>
+    </div>
+</body>

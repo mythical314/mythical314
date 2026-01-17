@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Editor</title>
+    <link rel="stylesheet" href = "{{ url_for('static', filename='style.css') }}">
+    <script type="text/javascript" src="{{ url_for ('static',filename = 'functions.js')}}"></script>
+</head>
+
+<body onload="populateQuizData('{{ QUIZ_ID }}')">
+    <div id = "top">
+        <h1 class="logo-link">
+            <a href="{{ url_for('main_menu', username=USERNAME) }}">QuizQuest</a>
+        </h1>
+        <div id="button-container">
+            <button type="button" onclick="window.location.href='{{ url_for('inbox', username=USERNAME) }}'">Inbox 📧</button>
+            <button type="button", id="login and sign out button", onclick="top_right_user_account_button_is_for_login_or_log_out(false)">Sign Out</button>
+        </div>
+    </div>
+    <h2>Edit/Create Quiz</h2>
+
+    <div class = "Body_Tabs_Quiz">
+        <button onclick="window.location.href='{{ url_for('quiz_list', username=USERNAME) }}'">Back</button>
+        <button onclick="saveQuizQuestions('{{ USERNAME }}', '{{ QUIZ_ID }}')">Save</button>
+        <button onclick="addQuizQuestion()">New Question</button>
+        <button onclick="deleteQuizQuestion()">Delete Question</button>
+    </div>
+
+    <table class = "List">
+        <thead>
+            <tr>
+                <th class = "List_Head">Name</th>
+                <th class = "List_Head">Topic</th>
+                <th class = "List_Head">Private</th>
+                <th class = "List_Head">Length</th>
+                <th class = "List_Head">Type</th>
+            </tr>
+        </thead>
+        <tbody class = "List_Body" id = "meta_table" contenteditable>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class = "List">
+        <thead>
+            <tr>
+                <th class = "List_Head">Question</th>
+                <th class = "List_Head">Answer 1</th>
+                <th class = "List_Head">Answer 2</th>
+                <th class = "List_Head">Answer 3</th>
+                <th class = "List_Head">Answer 4</th>
+                <th class = "List_Head">Correct Answer</th>
+            </tr>
+        </thead>
+        <tbody class = "List_Body" id = "question_table" contenteditable>
+        </tbody>
+    </table>
+</body>

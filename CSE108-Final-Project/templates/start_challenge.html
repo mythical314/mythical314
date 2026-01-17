@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Main Menu</title>
+    <link rel="stylesheet" href = "{{ url_for('static', filename='style.css') }}">
+    <script type="text/javascript" src="{{ url_for ('static',filename = 'functions.js')}}"></script>
+</head>
+
+<body>
+    <div id = "top">
+        <h1 class="logo-link">
+            <a href="{{ url_for('main_menu', username=USERNAME) }}">QuizQuest</a>
+        </h1>
+        <div id="button-container">
+            <button type="button" onclick="window.location.href='{{ url_for('inbox', username=USERNAME) }}'">Inbox 📧</button>
+            <button type="button", id="login and sign out button", onclick="top_right_user_account_button_is_for_login_or_log_out(false)">Sign Out</button>
+        </div>
+    </div>
+    <h2>Ready to start the quiz?</h2>
+        
+    <div class = "Body_Tabs_Quiz">
+        <button onclick="checkAnswer(0, '{{ USERNAME }}', '{{ CHALLENGE_ID }}', 0)">Yes!</button>
+        <button onclick="window.location.href='{{ url_for('main_menu', username=USERNAME) }}'">No...</button>
+    </div>
+
+
+    <!-- This is the main block of the page -->
+    <!-- <table class = "Main_Body">
+        <thead class = "Body_Tabs">
+			<tr>
+                <th>
+                    <p>Ready to start the quiz?</p>
+                </th>
+			</tr>
+		</thead>
+        <tbody>
+			<tr>
+                <td>
+                    <table class = 'answers_list'>
+                        <tr>
+                            <td>
+                                <button onclick="checkAnswer(0, '{{ USERNAME }}', '{{ CHALLENGE_ID }}', 0)">Yes!</button>
+                            </td>
+                            <td>
+                                <button onclick="window.location.href='{{ url_for('main_menu', username=USERNAME) }}'">No...</button>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+			</tr>
+		</tbody>
+    </table> -->
+</body>
