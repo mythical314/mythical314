@@ -1,0 +1,250 @@
+/*Currently copy-pasted from previous project- EDIT THIS*/
+
+body{
+  background-color: rgb(255, 255, 255);
+  background-image: url('https://marketplace.canva.com/EAGXrPSmaBo/1/0/1131w/canva-purple-and-white-geometric-background-poster-n_apnNiwfnw.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  font-family: Helvetica, sans-serif;
+  margin: 0 auto; /* removes the white space at the top */
+  padding: 0;
+}
+
+button {
+  font-family: Helvetica, sans-serif;
+  color: rgb(255, 255, 255);
+  width: 100px;
+  height: 50px;
+  border-radius: 12px;
+  margin: auto;
+  top: 50%;
+  background-color: rgb(243, 230, 255);
+}
+
+/* Aligns the top of the page */
+#top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  position: relative;
+  border-bottom: 1px solid #ccc; 
+  background-color: rgb(102, 23, 130);
+}
+
+#top h1 {
+  margin: 0;
+  color: white;
+}
+
+#button-container {
+  display: flex;
+  gap: 10px; /* spacing between buttons */
+}
+
+#button-container button {
+  color: black;
+  background-color: rgb(255, 255, 255);
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#button-container button:hover {
+  background-color: rgb(223, 223, 223);
+}
+
+.Main_Body a {
+  font-weight: bold;
+  color: black;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.Main_Body{
+  margin: auto;
+  width: 100%;
+  border-collapse: collapse;
+  justify-content: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/* ----------------------------         For stylizing the tables       --------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------------- */
+
+.List{
+  table-layout: fixed;
+  flex-grow: 1;
+  background-color: rgb(102, 23, 130);
+  border: 1px solid rgb(0, 0, 0);
+  border-collapse: collapse;
+  margin: 55px auto;
+  width: 80%;
+  font-size: 16px;
+}
+
+/* .Body_Head{
+  border-collapse: collapse; 
+  width: 100%;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+} */
+
+.Body_Tabs th {
+  width: auto; /* Adjust this value as needed */
+}
+
+.List_Head{
+  color: white;
+  border: 1px solid rgb(66, 4, 88);
+  border-bottom: 3px solid rgb(66, 4, 88);
+  width: 100%;
+  padding: 20px;
+  margin: 20px;
+  text-align: left;
+}
+
+.List_Head th {
+  width: auto;
+}
+
+/* ----------------------------------------------------------------------------------------------------------- */
+
+h1{
+  color: black;
+  text-align: center;
+  font-size: 30px;
+}
+
+.logo-link a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 30px; 
+}
+
+p, a, h2{
+  /* font-family: "Lucida Console", "Courier New", monospace; */
+  font-size: 18px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 30px;
+  padding-top: 50px;
+  color: rgb(102, 23, 130);
+}
+
+.User_Inputs {
+  border-collapse: collapse;
+  width: 80%;
+  font-size: 16px;
+  text-align: center;
+}
+
+.div_border {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 60px;
+}
+
+.User_Inputs td {
+  padding: 10px;
+  margin: 20px;
+}
+
+.centerAlign {
+  text-align: center;
+}
+
+/* Style the username and password input boxes */
+input[type="text"], input[type="password"] {
+  width: 120%; 
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+  border-radius: 1px; 
+  border: 1px solid rgb(102, 23, 130);
+  background-color: rgb(248, 241, 251);
+}
+
+.button_login, .button_no{
+  background-color: rgb(102, 23, 130);
+}
+
+.button_no {
+  width: 200px;
+  height: 50px
+}
+
+.div_border {
+  margin-top: 80px; 
+}
+
+.button_container {
+  margin-top: 30px; 
+}
+
+.List_Body tr:nth-child(odd) { background-color: rgb(248, 241, 251); }
+
+.List_Body tr:nth-child(even) { background-color: rgb(247, 225, 255); }
+
+.List_Body td {
+  padding: 15px;
+  margin: 15px;
+  border: 1px solid white;
+  font-size: 16px;
+}
+
+/* .Body_Tabs{ background-color: rgb(197, 223, 250); }
+
+.active_tab { background-color: rgb(57, 106, 211); } */
+
+.active_tab a { color: white; }
+
+.Body_Tabs, .Body_Tabs_Quiz {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* space between buttons */
+  padding: 20px;
+  /* background-color: rgb(197, 223, 250); */
+}
+
+.Body_Tabs button {
+  font-family: Helvetica, sans-serif;
+  background-color: rgb(102, 23, 130);
+  color: white;
+  font-size: 30px;
+  width: 350px;
+  height: 150px;
+  padding: 20px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.Body_Tabs_Quiz button {
+  font-family: Helvetica, sans-serif;
+  background-color: rgb(102, 23, 130);
+  color: white;
+  font-size: 20px;
+  width: 200px;
+  height: 75px;
+  padding: 15px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.Body_Tabs button:focus, .Body_Tabs_Quiz button:focus{
+  outline: none; /* removes blue box on focus */
+}
+
+.Body_Tabs button:hover, .Body_Tabs_Quiz button:hover{
+  background-color: rgb(67, 13, 91);
+}

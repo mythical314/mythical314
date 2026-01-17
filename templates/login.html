@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+    <title>Login</title>
+    <link rel="stylesheet" href = "{{ url_for('static', filename='style.css') }}">
+    <script type="text/javascript" src="{{ url_for ('static',filename = 'functions.js')}}"></script>
+
+    <body>
+        <h1>QuizQuest</h1>
+        <!--the boder-no-border thing name-wise is paradoxical, but it serves to make the border of the table look like I want -->
+        <div class = "div_border centerAlign">
+            <table>
+                <thead class = "User_Inputs">
+                    <tr>
+                        <td>Username</td><td><input type="text" id = "Username"/></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td><td><input type="password" id = "Password" required/></td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div class = "button_container centerAlign">
+            <div>
+            <!-- <div class = "centerAlign" style="transform: translateY(300%);"> -->
+                <button class="button_login" onclick="login_process()">Log In</button>
+                <button class="button_login" onclick="window.location.href='{{ url_for('signup_page') }}'">Sign Up</button>
+            </div>
+            </div>
+        </div>
+    </body>
+
+    <div style="position: fixed; left: 0; bottom: 20px; width: 100%; text-align: center;">
+        <button class="button_no" onclick="the_NO_button()">No.</button>
+    </div>
+
+    <script>
+        phrase1 = "please?";
+        phrase2 = "pretty please?";
+        phrase3 = "pretty please with a cherry on top?";
+        phrase4 = "PLEASE I BEG OF YOU!";
+        phrase5 = "🥺... please?";
+        phrase6 = "🥺";
+        phrases = [phrase1, phrase2, phrase3, phrase4, phrase5, phrase6, phrase6, phrase6];
+        index = 0;
+        triggerSpecialPhrase = false;
+        function the_NO_button() {
+            if (triggerSpecialPhrase == false)
+                alert(phrases[index]);
+            else
+                alert("But why? You have stuff typed in!")
+            
+            console.log((triggerSpecialPhrase === false) + " " + (document.getElementById("Username").value !== "" || document.getElementById("Password").value !== "") + "  -" + document.getElementById("Username").value + "-   -" + document.getElementById("Password").value + "-");
+            
+            index++;
+            if (index >= phrases.length)
+                if ((triggerSpecialPhrase === false) && (document.getElementById("Username").value !== "" || document.getElementById("Password").value !== ""))//if there is written text
+                {
+                    index--;//this is important
+                    triggerSpecialPhrase = true;
+                }
+                else
+                {
+                    index = 0;
+                    triggerSpecialPhrase = false;
+                }
+        }
+    </script>

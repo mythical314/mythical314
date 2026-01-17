@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Main Menu</title>
+    <link rel="stylesheet" href = "{{ url_for('static', filename='style.css') }}">
+    <script type="text/javascript" src="{{ url_for ('static',filename = 'functions.js')}}"></script>
+</head>
+
+<body>
+    <div id = "top">
+        <h1 class="logo-link">
+            <a href="{{ url_for('main_menu', username=USERNAME) }}">QuizQuest</a>
+        </h1>
+        <div id="button-container">
+            <button type="button" onclick="window.location.href='{{ url_for('inbox', username=USERNAME) }}'">Inbox 📧</button>
+            <button type="button", id="login and sign out button", onclick="top_right_user_account_button_is_for_login_or_log_out(false)">Sign Out</button>
+        </div>
+    </div>
+
+    <h2>Quiz Complete! You got {{ CORRECT_ANSWERS }} question(s) correct!</h2>
+
+    <div class = "Body_Tabs_Quiz">
+        <button onclick="window.location.href='{{ url_for('main_menu', username=USERNAME) }}'">Back To Main Menu</button>
+    </div>
+</body>

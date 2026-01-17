@@ -1,0 +1,7 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+<p>This is an admin page. Click the navigation to explore.</p>
+<button onclick="sign_out_process(), changePage('/login_page')">Sign Out</button>
+<script type="text/javascript" src="{{ url_for ('static',filename = 'functions.js')}}"></script>
+
+{% endblock %}

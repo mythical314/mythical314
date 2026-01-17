@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<title>Sign Up</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script type="text/javascript" src="{{ url_for ('static',filename = 'functions.js')}}"></script>
+
+<body>
+    <h1>QuizQuest - Sign Up</h1>
+    <div class="div_border centerAlign">
+        <form method="POST" action="{{ url_for('signup_process') }}">
+            <table>
+                <thead class="User_Inputs">
+                    <tr>
+                        <td>Full Name</td>
+                        <td><input type="text" name="fullname" id="Fullname" required></td>
+                    </tr>
+                    <tr>
+                        <td>Username</td>
+                        <td><input type="text" name="username" id="Username" required></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="password" name="password" id="Password" required></td>
+                    </tr>
+                    <tr>
+                        <td>Confirm Password</td>
+                        <td><input type="password" name="confirm_password" id="ConfirmPassword" required></td>
+                    </tr>
+                </thead>
+            </table>
+            <div class="button_container centerAlign">
+                <div>
+                    <button type="submit" class="button_login">Sign Up</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <p class="centerAlign">Already have an account? <a href="{{ url_for('login_page') }}">Log In</a></p>
+</body>
