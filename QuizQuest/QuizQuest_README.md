@@ -15,6 +15,8 @@ The stack used is as follows:
 - Backend: Python
 - Database: SQLite
 
+Requires Python3 and SQLite to run.
+
 In order to run this web app locally, you can simply download it and run app.py. An instance of the database will be created automatically.
 
 The app also works when hosted on a Vercel server.
