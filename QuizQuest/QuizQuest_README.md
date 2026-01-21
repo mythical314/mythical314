@@ -21,4 +21,4 @@ In order to run this web app locally, you can simply download it and run app.py.
 
 The app also works when hosted on a Vercel server.
 
-I had lots of fun making this project and challenging my friends to quizzes. I'm proud to show the results of my work here- please let me know if you have f+eedback!
+I had lots of fun making this project and challenging my friends to quizzes. I'm proud to show the results of my work here- please let me know if you have feedback!
