@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container w-50">
+    <h2 class="mb-4 text-center">Login</h2>
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input name="email" type="email" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" required>
+        </div>
+
+        <button class="btn btn-primary w-100">Login</button>
+    </form>
+    <a href="{{ url_for('add_user') }}" class="mb-3">New User?</a>
+    <div></div>
+    <a href="{{ url_for('add_developer') }}" class="mb-3">New Developer?</a>
+</div>
+
+
+{% endblock %}

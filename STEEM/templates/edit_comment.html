@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Edit Comment</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <textarea name="content" class="form-control" rows="4" required>{{ comment.Content }}</textarea>
+    </div>
+
+    <button class="btn btn-primary">Save Changes</button>
+    <a href="{{ url_for('post_view', post_id=comment.PostID) }}" 
+       class="btn btn-secondary">Cancel</a>
+</form>
+
+{% endblock %}

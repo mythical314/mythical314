@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>{{ game.Title }}</h2>
+<p class="text-muted">Developed by {{ game.DeveloperName }}</p>
+
+<hr>
+
+<!-- show game info -->
+<h4>Game Information</h4>
+<ul>
+    <li><strong>Genre:</strong> {{ game.Genre }}</li>
+    <li><strong>Release Date:</strong> {{ game.ReleaseDate }}</li>
+    <li><strong>Price:</strong> ${{ game.Price }}</li>
+</ul>
+
+<hr>
+
+<!-- game stats -->
+<h4>Statistics</h4>
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th>Stat Name</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in stats %}
+        <tr>
+            <td>{{ s.StatName }}</td>
+            <td>{{ s.StatValue }}</td>
+        </tr>
+        {% endfor %}
+
+        <!-- avg rating works with reviews -->
+        <tr>
+            <td>AverageRating</td>
+            <td>
+                {% if avg_rating %}
+                    {{ avg_rating }}
+                {% else %}
+                    No ratings yet
+                {% endif %}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+
+<!-- achievement list -->
+<h4>Achievements</h4>
+<ul>
+    {% for a in achievements %}
+    <li><strong>{{ a.Title }}:</strong> {{ a.Description }}</li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<!-- show reviews for game -->
+<h4>Reviews</h4>
+{% for r in reviews %}
+<div class="card my-3 p-3">
+    <h5>{{ r.UserName }} — Rating: {{ r.Rating }}/10</h5>
+    <p>{{ r.Comment }}</p>
+    <small class="text-muted">{{ r.ReviewDate }}</small>
+    {% if session.role == 'user' and r.UserID == session.user_id %}
+        <form action="{{ url_for('edit_review', game_id=game.GameID) }}" method="GET">
+            <p></p>
+            <button type="submit" class="btn btn-sm btn-primary">Edit Review</button>
+        </form>
+    {% endif %}
+</div>
+{% endfor %}
+
+<hr>
+
+<!-- buying or removing -->
+{% if session.get('role') == 'user' %}
+    {% if user_has_game %}
+        <form action="{{ url_for('remove_purchase', game_id=game.GameID) }}" method="post">
+            <button class="btn btn-danger mt-3">Remove From Library</button>
+        </form>
+    {% else %}
+        <form action="{{ url_for('buy_game', game_id=game.GameID) }}" method="post">
+            <button class="btn btn-success mt-3">Buy Game (${{ game.Price }})</button>
+        </form>
+    {% endif %}
+{% endif %}
+
+
+<hr>
+
+<!-- leaving review -->
+ {% if user_has_game and session.role == 'user' %}
+    <h4>Leave a Review</h4>
+
+    <form action="{{ url_for('leave_review', game_id=game.GameID) }}" method="POST">
+        <label>Rating (1–10):</label>
+        <input type="number" class="form-control" name="rating" min="1" max="10" required>
+
+        <p></p>
+
+        <label>Comment:</label>
+        <textarea name="comment" class="form-control" required></textarea>
+
+        <p></p>
+
+        <button type="submit" class="btn btn-sm btn-primary">Submit Review</button>
+    </form>
+{% endif %}
+
+{% endblock %}

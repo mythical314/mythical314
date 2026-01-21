@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Add New Game</h2>
+
+<form action="{{ url_for('dev_add_game') }}" method="POST">
+
+    <label>Title:</label>
+    <input type="text" name="title" class="form-control" required>
+
+    <label>Genre:</label>
+    <input type="text" name="genre" class="form-control" required>
+
+    <label>Price:</label>
+    <input type="number" name="price" step="0.01" class="form-control" required>
+
+    <button type="submit" class="btn btn-success mt-3">Add Game</button>
+
+</form>
+
+{% endblock %}

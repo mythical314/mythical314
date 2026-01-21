@@ -1,0 +1,139 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <h1 class="mb-4">Welcome {{ session.get('user_name', '') }}</h1>
+
+    <a class="btn btn-info mb-3" href="{{ url_for('forums') }}">
+        Browse Forums
+    </a>
+
+
+    <a href="{{ url_for('find_friends') }}" class="btn btn-primary mb-3">
+    Find Users
+    </a>
+
+    <!-- showing your games -->
+    <h2>Your Games</h2>
+
+    {% if purchases %}
+        <ul class="list-group mb-4">
+            {% for g in purchases %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                <div>
+                    <strong>{{ g.Title }}</strong>
+                    <span class="text-muted">({{ g.Genre }})</span>
+                </div>
+
+                <div>
+
+                    <a class="btn btn-outline-primary btn-sm">
+                        Download Game
+                    </a>
+
+                    <a class="btn btn-outline-primary btn-sm"
+                    href="{{ url_for('game_details', game_id=g.GameID) }}">
+                        View Game Details
+                    </a>
+
+                    <a class="btn btn-outline-primary btn-sm"
+                    href="{{ url_for('user_game_achievements', userID=session['user_id'], gameID=g.GameID) }}">
+                        View Achievements
+                    </a>
+
+                </div>
+
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted">You have not purchased any games yet.</p>
+    {% endif %}
+
+
+    <!-- show friend request states -->
+    <h2>Incoming Friend Requests</h2>
+
+    {% if incoming %}
+        <ul class="list-group mb-4">
+            {% for r in incoming %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                <span><strong>{{ r.SenderName }}</strong> wants to be your friend</span>
+
+                <div>
+                    <a class="btn btn-success btn-sm"
+                       href="{{ url_for('accept_friend_request', request_id=r.RequestID) }}">
+                        Accept
+                    </a>
+
+                    <a class="btn btn-danger btn-sm"
+                       href="{{ url_for('decline_friend_request', request_id=r.RequestID) }}">
+                        Decline
+                    </a>
+                </div>
+
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted">No pending requests.</p>
+    {% endif %}
+
+    <h2>Outgoing Friend Requests</h2>
+
+    {% if outgoing %}
+        <ul class="list-group mb-4">
+            {% for r in outgoing %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                <span>Request sent to <strong>{{ r.ReceiverName }}</strong> (pending)</span>
+
+                <a class="btn btn-outline-danger btn-sm"
+                   href="{{ url_for('decline_friend_request', request_id=r.RequestID) }}">
+                    Cancel
+                </a>
+
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted">No outgoing requests.</p>
+    {% endif %}
+
+
+
+    <!-- ur friends list -->
+    <h2>Your Friends</h2>
+
+    {% if friends %}
+        <ul class="list-group mb-5">
+            {% for f in friends %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                <span>{{ f.FriendName }}</span>
+
+                <div>
+                    <a class="btn btn-outline-primary btn-sm"
+                       href="{{ url_for('user_profile', userID=f.FriendID) }}">
+                        View Profile
+                    </a>
+
+                    <a class="btn btn-outline-danger btn-sm"
+                       href="{{ url_for('remove_friend', friend_id=f.FriendID) }}">
+                        Remove
+                    </a>
+                </div>
+
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted">You have no friends yet.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

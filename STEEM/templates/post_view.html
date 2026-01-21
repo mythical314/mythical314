@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<a href="{{ url_for('forum_view', forum_id=post.ForumID) }}" 
+   class="btn btn-secondary mb-3">
+    Back to Forum
+</a>
+
+<h2>{{ post.Title }}</h2>
+<p>{{ post.Body }}</p>
+
+<small class="text-muted">
+    Posted by {{ post.UserName }} — {{ post.CreatedOn }}
+</small>
+
+<hr>
+
+<h4>Comments</h4>
+
+{% if not comments %}
+<p class="text-muted">No comments yet.</p>
+{% endif %}
+
+{% for c in comments %}
+<div class="card mb-2">
+    <div class="card-body">
+        <p>{{ c.Content }}</p>
+        <small class="text-muted">
+            By {{ c.UserName }} — {{ c.CreatedOn }}
+        </small>
+        
+        {% if session.role == 'admin' %}
+        <form action="{{ url_for('admin_delete_comment', comment_id=c.CommentID) }}" method="post" class="d-inline">
+            <button class="btn btn-sm btn-danger">Delete</button>
+        </form>
+        {% endif %}
+
+        {% if session.get('role') == 'user' and c.UserID == session['user_id'] %}
+            <div class="mt-2">
+
+                <!-- editting comment -->
+                <a href="{{ url_for('edit_comment', comment_id=c.CommentID) }}"
+                   class="btn btn-warning btn-sm">
+                    Edit
+                </a>
+
+                <!-- deleting comment -->
+                <form action="{{ url_for('delete_comment', comment_id=c.CommentID) }}"
+                      method="post" style="display:inline;">
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                </form>
+
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endfor %}
+
+
+{% if session.get('role') == 'user' %}
+<form action="{{ url_for('add_comment', post_id=post.PostID) }}" method="post" class="mt-3">
+    <div class="mb-3">
+        <textarea name="content" class="form-control" rows="3" placeholder="Write a comment..." required></textarea>
+    </div>
+    <button class="btn btn-primary btn-sm">Submit Comment</button>
+</form>
+{% endif %}
+
+{% if session.get('role') == 'user' and post.UserID == session['user_id'] %}
+    <div class="mb-3">
+        <a href="{{ url_for('edit_post', post_id=post.PostID) }}"
+           class="btn btn-warning btn-sm">Edit</a>
+
+        <form action="{{ url_for('delete_post', post_id=post.PostID) }}"
+              method="post" style="display:inline;">
+            <button class="btn btn-danger btn-sm">Delete</button>
+        </form>
+    </div>
+{% endif %}
+
+
+{% endblock %}

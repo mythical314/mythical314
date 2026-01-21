@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <h1 class="mb-4 text-center">Admin Dashboard</h1>
+
+    <!-- user stuff for admin -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            User Management
+        </div>
+        <div class="card-body d-flex flex-wrap">
+            <a href="{{ url_for('view_table', table='Users') }}" class="btn btn-outline-primary m-2">
+                View Users
+            </a>
+            <a href="{{ url_for('add_user') }}" class="btn btn-outline-primary m-2">
+                Add New User
+            </a>
+            <a href="{{ url_for('view_table', table='Friends') }}" class="btn btn-outline-primary m-2">
+                View Friendships
+            </a>
+        </div>
+    </div>
+
+    <!-- dev stuff for admin -->
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            Developer Management
+        </div>
+        <div class="card-body d-flex flex-wrap">
+            <a href="{{ url_for('view_table', table='Developers') }}" class="btn btn-outline-success m-2">
+                View Developers
+            </a>
+            <a href="{{ url_for('add_developer') }}" class="btn btn-outline-success m-2">
+                Add New Developer
+            </a>
+            <a href="{{ url_for('view_table', table='Creations') }}" class="btn btn-outline-success m-2">
+                Developer Creations
+            </a>
+        </div>
+    </div>
+
+    <!-- admin stuff for admin -->
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            Admin Management
+        </div>
+        <div class="card-body d-flex flex-wrap">
+            <a href="{{ url_for('view_table', table='Admins') }}" class="btn btn-outline-dark m-2">
+                View Admins
+            </a>
+            <a href="{{ url_for('add_admin') }}" class="btn btn-outline-dark m-2">
+                Add New Admin
+            </a>
+            <a href="{{ url_for('view_table', table='Creations') }}" class="btn btn-outline-dark m-2">
+                Developer Creations
+            </a>
+        </div>
+    </div>
+
+    <!-- game stuff for admin -->
+    <div class="card mb-4">
+        <div class="card-header bg-warning text-dark">
+            Game Management
+        </div>
+        <div class="card-body d-flex flex-wrap">
+            <a href="{{ url_for('view_table', table='Games') }}" class="btn btn-outline-warning m-2">
+                View Games
+            </a>
+            <a href="{{ url_for('view_table', table='Statistics') }}" class="btn btn-outline-warning m-2">
+                View Game Statistics
+            </a>
+            <a href="{{ url_for('view_table', table='Reviews') }}" class="btn btn-outline-warning m-2">
+                View Reviews
+            </a>
+        </div>
+    </div>
+
+    <!-- forum managing for admin -->
+    <div class="card mb-4">
+        <div class="card-header bg-info text-white">
+            Forums
+        </div>
+        <div class="card-body d-flex flex-wrap">
+            <a href="{{ url_for('view_table', table='Forums') }}" class="btn btn-outline-info m-2">
+                View Forums
+            </a>
+            <a href="{{ url_for('view_table', table='Members') }}" class="btn btn-outline-info m-2">
+                View Forum Members
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

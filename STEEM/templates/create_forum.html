@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Create New Forum</h2>
+
+<form method="post" class="mt-3">
+    <div class="mb-3">
+        <label class="form-label">Forum Title</label>
+        <input type="text" name="title" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea name="description" class="form-control" rows="3"></textarea>
+    </div>
+
+    <button class="btn btn-success">Create Forum</button>
+    <a href="{{ url_for('forums') }}" class="btn btn-secondary">Cancel</a>
+</form>
+
+{% endblock %}

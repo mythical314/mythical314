@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Manage Achievements</h2>
+
+<form action="{{ url_for('dev_add_achievement', game_id=game_id) }}" method="POST">
+    <input type="text" name="title" placeholder="Achievement title" required>
+    <textarea name="description" placeholder="Description" required></textarea>
+    <button class="btn btn-success">Add Achievement</button>
+</form>
+
+<hr>
+
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+    </tr>
+    {% for a in achievements %}
+    <tr>
+        <td>{{ a.Title }}</td>
+        <td>{{ a.Description }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

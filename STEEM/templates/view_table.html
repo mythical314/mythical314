@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>{{ table }} Table</h2>
+
+<table class="table table-bordered table-striped mt-3">
+    <thead>
+        <tr>
+            {% for col in rows[0].keys() %}
+            <th>{{ col }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for row in rows %}
+        <tr>
+
+            {% for col in row.keys() %}
+
+                {% if table == "Users" and col == "Name" %}
+                    <td>
+                        <a href="/user/{{ row.UserID }}">
+                            {{ row.Name }}
+                        </a>
+                    </td>
+
+                {% else %}
+                    <td>{{ row[col] }}</td>
+
+                {% endif %}
+
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

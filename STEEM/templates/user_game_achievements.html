@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Achievement Progress</h2>
+
+<div class="alert alert-info mt-3">
+    <strong>Average Completion Rate:</strong>
+    {{ ((avg_game_completion or 0) * 100) | round(1) }}%<br>
+
+    <strong>User Completion Rate:</strong>
+    {{ ((user_game_completion or 0) * 100) | round(1) }}%
+</div>
+
+<table class="table table-bordered table-striped mt-4">
+    <thead class="table-dark">
+        <tr>
+            <th>Achievement</th>
+            <th>Description</th>
+            <th>User Completed?</th>
+            <th>Completion Rate</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for a in rows %}
+        <tr>
+            <td>{{ a.AchievementTitle }}</td>
+            <td>{{ a.Description }}</td>
+
+            <td>
+                {% if a.UserHasAchieved %}
+                    <span class="badge bg-success">✓ Completed</span>
+                {% else %}
+                    <span class="badge bg-secondary">Not Completed</span>
+                {% endif %}
+            </td>
+
+            <td>
+                {% if a.AchievementRate %}
+                    {{ ((a.AchievementRate or 0) * 100) | round(1) }}%
+                {% else %}
+                    0%
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if session.get('role') == 'developer' %}
+    <a href="{{ url_for('developer_dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+{% else %}
+    <a href="{{ url_for('user_dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+{% endif %}
+
+{% endblock %}

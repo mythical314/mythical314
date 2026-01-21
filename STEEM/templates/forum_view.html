@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<a href="{{ url_for('forums') }}" class="btn btn-secondary mb-3">
+    Back to Forums
+</a>
+
+<h2>{{ forum.Title }}</h2>
+<p class="text-muted">{{ forum.Description }}</p>
+
+<hr>
+
+{% if session.get('role') == 'user' %}
+    {% if is_member %}
+        <form action="{{ url_for('leave_forum', forum_id=forum.ForumID) }}" 
+              method="post" style="display:inline;">
+            <button class="btn btn-danger btn-sm">Leave Forum</button>
+        </form>
+    {% else %}
+        <form action="{{ url_for('join_forum', forum_id=forum.ForumID) }}" 
+              method="post" style="display:inline;">
+            <button class="btn btn-primary btn-sm">Join Forum</button>
+        </form>
+    {% endif %}
+{% endif %}
+
+
+<hr>
+
+<h3>Posts</h3>
+
+{% if not posts %}
+<p class="text-muted">No posts yet in this forum.</p>
+{% endif %}
+
+{% for p in posts %}
+<div class="card mb-3">
+    <div class="card-body">
+        <h5>{{ p.Title }}</h5>
+        <p>{{ p.Body }}</p>
+        <small class="text-muted">
+            Posted by {{ p.UserName }} — {{ p.CreatedOn }}
+        </small>
+
+        {% if session.role == 'admin' %}
+        <form action="{{ url_for('admin_delete_post', post_id=p.PostID) }}" method="post" class="d-inline">
+            <button class="btn btn-sm btn-danger">Delete Post</button>
+        </form>
+        {% endif %}
+
+        <div class="mt-2">
+            <a href="{{ url_for('post_view', post_id=p.PostID) }}"
+               class="btn btn-outline-primary btn-sm">View Thread</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% if is_member %}
+<a href="{{ url_for('new_post', forum_id=forum.ForumID) }}" class="btn btn-success mt-3">
+    Create New Post
+</a>
+{% endif %}
+
+{% endblock %}

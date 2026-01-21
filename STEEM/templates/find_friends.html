@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2 class="mb-4 text-center">Find Friends</h2>
+
+<!-- search func -->
+<form method="POST" class="d-flex justify-content-center">
+    <input type="text" name="search" class="form-control w-50" placeholder="Search users..." required>
+    <button class="btn btn-primary ms-2">Search</button>
+</form>
+
+{% if recommended %}
+    <hr>
+    <h4>Recommended:</h4>
+
+    <ul class="list-group">
+
+        {% for u in recommended %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+
+            <!-- getting username/email -->
+            <span>
+                <strong>{{ u.Name }}</strong>
+                <small class="text-muted">({{ u.Email }})</small>
+            </span>
+
+            <!-- buttons to see states -->
+            <span>
+
+                {% if u.FriendStatus == 'friend' %}
+                    <span class="badge bg-success">Already Friends</span>
+
+                {% elif u.PendingSent == 'pending' %}
+                    <span class="badge bg-info text-dark">Request Sent</span>
+
+                {% elif u.PendingReceived == 'pending' %}
+                    <span class="badge bg-warning text-dark">Requested You</span>
+
+                {% else %}
+                    <a href="{{ url_for('send_friend_request', receiver_id=u.UserID) }}"
+                       class="btn btn-primary btn-sm">
+                        Add Friend
+                    </a>
+                {% endif %}
+
+            </span>
+
+        </li>
+        {% endfor %}
+
+    </ul>
+
+{% endif %}
+
+{% if results %}
+    <hr>
+    <h4>Results:</h4>
+
+    <ul class="list-group">
+
+        {% for u in results %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+
+            <!-- getting username/email -->
+            <span>
+                <strong>{{ u.Name }}</strong>
+                <small class="text-muted">({{ u.Email }})</small>
+            </span>
+
+            <!-- buttons to see states -->
+            <span>
+
+                {% if u.FriendStatus == 'friend' %}
+                    <span class="badge bg-success">Already Friends</span>
+
+                {% elif u.PendingSent == 'pending' %}
+                    <span class="badge bg-info text-dark">Request Sent</span>
+
+                {% elif u.PendingReceived == 'pending' %}
+                    <span class="badge bg-warning text-dark">Requested You</span>
+
+                {% else %}
+                    <a href="{{ url_for('send_friend_request', receiver_id=u.UserID) }}"
+                       class="btn btn-primary btn-sm">
+                        Add Friend
+                    </a>
+                {% endif %}
+
+            </span>
+
+        </li>
+        {% endfor %}
+
+    </ul>
+
+{% endif %}
+
+{% endblock %}

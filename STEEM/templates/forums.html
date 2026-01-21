@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2 class="mb-4">Forums</h2>
+
+{% if session.get('role') in ['user', 'admin'] %}
+    <a href="{{ url_for('create_forum') }}" class="btn btn-success mb-3">
+        Create New Forum
+    </a>
+{% endif %}
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Forum</th>
+            <th>Description</th>
+            <th>Created On</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for f in forums %}
+        <tr>
+            <td>{{ f.Title }}</td>
+            <td>{{ f.Description }}</td>
+            <td>{{ f.CreatedOn }}</td>
+
+            <td>
+                <!-- user forum state -->
+                {% if session.get('role') == 'user' %}
+                    {% if f.IsMember %}
+                        Member
+                    {% else %}
+                        Not Joined
+                    {% endif %}
+                {% endif %}
+
+                <!-- dev forum state, cant have -->
+                {% if session.get('role') == 'developer' %}
+                    Developer
+                {% endif %}
+
+                <!-- admin forum state, same as dev -->
+                {% if session.get('role') == 'admin' %}
+                    Admin
+                {% endif %}
+            </td>
+
+            <td>
+
+                <!-- user forum command -->
+                {% if session.get('role') == 'user' %}
+
+                    {% if f.IsMember %}
+                        <!-- entering -->
+                        <a href="{{ url_for('forum_view', forum_id=f.ForumID) }}"
+                           class="btn btn-primary btn-sm">Enter</a>
+
+                        <!-- leavin -->
+                        <form action="{{ url_for('leave_forum', forum_id=f.ForumID) }}"
+                              method="post" style="display:inline;">
+                            <button class="btn btn-danger btn-sm">Leave</button>
+                        </form>
+
+                    {% else %}
+                        <!-- joining -->
+                        <form action="{{ url_for('join_forum', forum_id=f.ForumID) }}"
+                              method="post" style="display:inline;">
+                            <button class="btn btn-success btn-sm">Join</button>
+                        </form>
+                    {% endif %}
+
+                {% endif %}
+
+
+                <!-- devs can only join (having problems with doing other states) -->
+                {% if session.get('role') == 'developer' %}
+                    <a href="{{ url_for('forum_view', forum_id=f.ForumID) }}"
+                       class="btn btn-outline-primary btn-sm">Enter</a>
+                {% endif %}
+
+
+                <!-- admins can delete/enter -->
+                {% if session.get('role') == 'admin' %}
+                    <a href="{{ url_for('forum_view', forum_id=f.ForumID) }}"
+                       class="btn btn-primary btn-sm">Enter</a>
+
+                    <form action="{{ url_for('delete_forum', forum_id=f.ForumID) }}"
+                          method="post" style="display:inline; margin-left:5px;">
+                        <button class="btn btn-outline-danger btn-sm">Delete</button>
+                    </form>
+                {% endif %}
+
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
