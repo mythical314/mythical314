@@ -3,6 +3,9 @@ Hello! My name is Alexander Lim- I'm a recent graduate of UC Merced looking to g
 
 ### Experience
 - 4 years coding in Python
+- 4 years coding in C++
+- 4 years using Git
+- 4 years using Bash command line
 - 4 years creating workflows in Salesforce
 - 4 years project leadership experience
 - 4 years experience using Github to manage projects
